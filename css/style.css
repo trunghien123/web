@@ -24,95 +24,113 @@
     }
   }
 /* Search */
-			.search-header {
-				float: left;
-			}
-
-			form.input-search {
-				margin-left: 20px;
-				background: #ddd;
-				border: 2px solid #bbb;
-				border-radius: 10px;
-				height: 35px;
-				width: 300px;
-				/* điều chỉnh width của ô tìm kiếm trên header ở đây */
-			}
-			.input-search input {
-				float: left;
-				padding-left: 15px;
-				border: none;
-				border-radius: 10px 0 0 10px;
-				height: 100%;
-				width: calc(100% - 50px - 0px);
-				/* 100 la width button, 20 la padding button */
-			}
-			.input-search button {
-				float: right;
-			
-				padding: 0 10px;
-				color: #888;
-				background: none;
-				width: 50px;
-				height: 100%;
-				border: none;
-				cursor: pointer;
-				-webkit-transition-duration: .3s;
-				     -o-transition-duration: .3s;
-				        transition-duration: .3s;
-			}
-			.input-search button:hover {
-				color: #000;
-			}
-
-			.tags {
-				margin: 5px 0 0 20px;
-				font-size: 13px;
-			}
-			.tags a {
-				color: gray;
-				padding: 0 5px;
-			}
-			.tags a:hover {
-				color: black;
-				text-decoration: underline;
-			}
-
-			/* W3 school autocomplete */
-				.autocomplete {
-					/*the container must be positioned relative:*/
-					position: relative;
-					height: 100%;
-				}
-				.autocomplete-items {
-					position: absolute;
-					border: 1px solid #d4d4d4;
-					border-bottom: none;
-					border-top: none;
-					z-index: 99;
-					/*position the autocomplete items to be the same width as the container:*/
-					top: 100%;
-					left: 0;
-					right: 0;
-				}
-				.autocomplete-items div {
-					padding: 10px;
-					cursor: pointer;
-					background-color: #fff; 
-					border-bottom: 1px solid #d4d4d4; 
-				}
-				.autocomplete-items div:hover {
-					/*when hovering an item:*/
-					background-color: #e9e9e9; 
-				}
-				.autocomplete-active {
-					/*when navigating through the items using the arrow keys:*/
-					background-color: DodgerBlue !important; 
-					color: #ffffff; 
-				}
-			/* End auto complete */
-		/* ======= End search ========== */
+	.search-header {
+		float: left;
+	}
+	form.input-search {
+		margin-left: 20px;
+		background: #ddd;
+		border: 2px solid #bbb;
+		border-radius: 10px;
+		height: 35px;
+		width: 300px;
+	/* điều chỉnh width của ô tìm kiếm trên header ở đây */
+	}
+	.input-search input {
+		float: left;
+		padding-left: 15px;
+		border: none;
+		border-radius: 10px 0 0 10px;
+		height: 100%;
+		width: calc(100% - 50px - 0px);
+	/* 100 la width button, 20 la padding button */
+	}
+	.input-search button {
+		float: right;		
+		padding: 0 10px;
+		color: #888;
+		background: none;
+		width: 50px;
+		height: 100%;
+		border: none;
+		cursor: pointer;
+		-webkit-transition-duration: .3s;
+	    -o-transition-duration: .3s;
+	    transition-duration: .3s;
+	}
+	.input-search button:hover {
+		color: #000;
+	}
+	.tags {
+		margin: 5px 0 0 20px;
+		font-size: 13px;
+	}
+	.tags a {
+		color: gray;
+		padding: 0 5px;
+	}
+	.tags a:hover {
+		color: black;
+		text-decoration: underline;
+	}
+/* W3 school autocomplete */
+	.autocomplete {
+	/*the container must be positioned relative:*/
+		position: relative;
+		height: 100%;
+	}
+	.autocomplete-items {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		border-bottom: none;
+		border-top: none;
+		z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+		top: 100%;
+		left: 0;
+		right: 0;
+	}
+	.autocomplete-items div {
+		padding: 10px;
+		cursor: pointer;
+		background-color: #fff; 
+		border-bottom: 1px solid #d4d4d4; 
+	}
+	.autocomplete-items div:hover {
+	/*when hovering an item:*/
+		background-color: #e9e9e9; 
+	}
+	.autocomplete-active {
+	/*when navigating through the items using the arrow keys:*/
+		background-color: DodgerBlue !important; 
+		color: #ffffff; 
+	}
+	/* End auto complete */
+	/* ======= End search ========== */
 /**/
 .container-float-left
 {
 	float: left;
+}
+/*css san pham*/
+ul{
+	list-style: none;
+}
+.khungsp{
+	height: 250px;
+	width: 200px;
+	border: 1px solid pink;
+	/*border-left: 1px solid pink;*/
+	/*box-shadow: 5px 5px 5px #666;
+	-moz-box-shadow: 5px 5px 5px #666;
+  	-webkit-box-shadow: 5px 5px 5px #666;*/	
+}
+.nutgiohang{
+	margin: 10px 20px 10px 20px;
+	border-radius: 5px;
+	background:white ;
+	outline: none;
+}
+.nutgiohang:hover {
+	background: #e5cf75;
 }
