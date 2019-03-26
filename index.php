@@ -1,15 +1,29 @@
+<?php
+      $con = new mysqli("localhost","root","123456","sanpham");
+      $sotin1trang = 8;
+      if(isset($_GET["trang"]))
+      {
+        $trang = $_GET["trang"];
+        settype ( $trang,"int" );
+      }
+      else 
+      {
+        $trang = 1;
+      }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Đồng Hồ Shop</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="js/dungchung.js"></script>
+  <script></script>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/taikhoan.css">
+  <link rel="stylesheet" href="css/containerr.css">
+  
 </head>
 <body>
   <!-- header-->
@@ -56,7 +70,7 @@
  <br/>
   <div class="col-md-4">
     <div>
-      <form class="input-search" method="get" action="index.html">
+      <form class="input-search" style="margin-left: 70px" method="get" action="index.php">
                     <div class="autocomplete">
                         <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
                         <button type="submit">
@@ -65,87 +79,85 @@
                     </div>
                 </form>
     </div><br/>
-    <table style="margin-left: 20px">
+    <table style="margin-left: 70px">
         <tr> 
           <td> Phân loại : </td>
-          <td>  <select style="margin-left: 10px">
-                  <option>Casio</option>
+          <td>  
+                <select style="margin-left: 10px">
+                  <option value="casio">Casio</option>
+                  <option value="skagen">Skagen</option>
+                  <option value="tissot">Tissot</option>
+                  <option value="op">OP</option>
+                  <option value="doxa">Doxa</option>
+                  <option value="seiko">Seiko</option>
+                  <option value="gshock">G-shock</option>
+                  <option value="movado">Movado</option>
+                  <option value="candino">Candino</option>
+                  <option value="citizen">Citizen</option>
+                  <option value="dw">Daniel Wellington (DW)</option>
                 </select>
           </td>
         </tr>
     </table><br/>
-    <table style="margin-left: 20px">
+    <table style="margin-left: 70px">
         <tr>
           <form>
             <td> Khoảng giá: </td>
-            <td> <input type="text" name="giatu" size="5">~<input type="text" name="giaden" size="5"> </td>
+            <td> <input type="text" name="giatu" size="10">~<input type="text" name="giaden" size="10"> </td>
           </form>
         </tr>
     </table><br/>
-    <table style="margin-left: 90px">
-        <tr><td align="text-center" colspan="2"><input type="submit" name="timkiem" value="Tìm kiếm"></td></tr>
+    <table style="margin-left: 160px">
+        <tr><td colspan="2"><input type="submit" name="timkiem" value="Tìm kiếm" class="timkiemnc" ></td></tr>
     </table>
     <br/>
   </div>
   <div class="col-md-8">
-    
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png" width="180px">
-          <button class="nutgiohang">
+     
+    <!--ket noi co so du lieu -->
+    <?php  
+      $from = ($trang -1 )* $sotin1trang;
+      $sql="SELECT * FROM sanphamdb LIMIT $from, $sotin1trang";
+      $result = mysqli_query($con,$sql); 
+      while($row = mysqli_fetch_array($result)) {
+          echo '<div class="col-sm-6 khungsp" style="height: 300px">
+            <a href="#">';
+              echo '<img src="'.$row["hinhanh"].'" width="180px">
+                    <p style="text-align: center;"> ';
+              echo $row["tensp"].'</br>
+            </a>';
+              echo '<b>'.$row["giatien"].' ₫</b>
+              </p>';
+          echo '<button class="nutgiohang">
               <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
           </button>
-      </div>
-      <div class="col-sm-6 khungsp ">
-          <img src="images/casio1.png" width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png" width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png" width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png"width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png"width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png"width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png"width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      <div class="col-sm-6 khungsp">
-          <img src="images/casio1.png"width="180px">
-          <button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-      </div>
-      
-  </div>
-</div><br>
+          </div>';
+      }
+
+    ?>
+   
+    </div>
+  
+</div>
+<footer class="container text-center" style="background: white">
+  
+     <?php
+    // phan trang
+      $x = "SELECT masp from sanphamdb";
+      $r = mysqli_query($con,$x);
+      $tongsotin = mysqli_num_rows($r);
+      $sotrang = ceil($tongsotin/$sotin1trang);
+      echo '<ul class="pagination">';
+      for($t=1;$t<=$sotrang;$t++)
+        {         
+           echo '<li><a href="index.php?trang='.$t.'">'.$t.'</a></li>';         
+        }
+      echo '</ul>';
+    ?>
+    <?php 
+      mysqli_close($con);
+    ?> 
+</footer>
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
