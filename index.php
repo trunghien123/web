@@ -1,20 +1,11 @@
 <?php
-      $con = new mysqli("localhost","root","123456","sanpham");
-      $sotin1trang = 8;
-      if(isset($_GET["trang"]))
-      {
-        $trang = $_GET["trang"];
-        settype ( $trang,"int" );
-      }
-      else 
-      {
-        $trang = 1;
-      }
+      require("connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Đồng Hồ Shop</title>
+  <link rel="shortcut icon" href="images/clock.png" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -23,6 +14,7 @@
   <script></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/containerr.css">
+
   
 </head>
 <body>
@@ -65,19 +57,19 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-  <!--body-->
+  
 <div class="row">    
  <br/>
   <div class="col-md-4">
     <div>
-      <form class="input-search" style="margin-left: 70px" method="get" action="index.php">
-                    <div class="autocomplete">
-                        <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
-                        <button type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                </form>
+      <form class="input-search" style="margin-left: 70px" method="get" action="index.php" >
+            <div class="autocomplete">
+                <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                <button type="submit" name="submit" value="tìm kiếm">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+      </form>
     </div><br/>
     <table style="margin-left: 70px">
         <tr> 
@@ -108,60 +100,98 @@
         </tr>
     </table><br/>
     <table style="margin-left: 160px">
-        <tr><td colspan="2"><input type="submit" name="timkiem" value="Tìm kiếm" class="timkiemnc" ></td></tr>
+        <tr>
+          <td colspan="2">
+            <form method="get" action="index.php">
+              <input type="submit" name="timkiem" value="Tìm kiếm" class="timkiemnc" >
+            </form>
+          </td>
+        </tr>
     </table>
     <br/>
   </div>
   <div class="col-md-8">
      
     <!--ket noi co so du lieu -->
-    <?php  
-      $from = ($trang -1 )* $sotin1trang;
-      $sql="SELECT * FROM sanphamdb LIMIT $from, $sotin1trang";
-      $result = mysqli_query($con,$sql); 
-      while($row = mysqli_fetch_array($result)) {
-          echo '<div class="col-sm-6 khungsp" style="height: 300px">
-            <a href="#">';
-              echo '<img src="'.$row["hinhanh"].'" width="180px">
-                    <p style="text-align: center;"> ';
-              echo $row["tensp"].'</br>
-            </a>';
-              echo '<b>'.$row["giatien"].' ₫</b>
-              </p>';
-          echo '<button class="nutgiohang">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
-          </button>
-          </div>';
-      }
-
-    ?>
-   
-    </div>
-  
-</div>
-<footer class="container text-center" style="background: white">
-  
-     <?php
-    // phan trang
-      $x = "SELECT masp from sanphamdb";
-      $r = mysqli_query($con,$x);
-      $tongsotin = mysqli_num_rows($r);
-      $sotrang = ceil($tongsotin/$sotin1trang);
-      echo '<ul class="pagination">';
-      for($t=1;$t<=$sotrang;$t++)
-        {         
-           echo '<li><a href="index.php?trang='.$t.'">'.$t.'</a></li>';         
+    <!-- TIMKIEM -->
+    <?php
+        if(isset($_GET['search'])){
+          $search = $_GET['search'];
         }
-      echo '</ul>';
-    ?>
-    <?php 
-      mysqli_close($con);
-    ?> 
-</footer>
+        else
+          $search = "";
+        
+        if(empty($search))
+        {
+          require("phantrang.php");
+          
+        }
+        else
+        {
+             
+            $sotin1trang = 8;
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+            if(isset($_GET['trang']))
+            {
+              $trang = $_GET['trang'];
+            }
+            if(!isset($_GET['trang'])||$_GET['trang']<1 || $_GET['trang']>6)
+            {
+              $trang =1;
+            }
+            $from = ($trang -1 )* $sotin1trang;
+            $sql="SELECT * FROM sanphamdb WHERE tensp like '%$search%' LIMIT $from, $sotin1trang";
+            $result = mysqli_query($con,$sql); 
+            while($row = mysqli_fetch_array($result)) {
+                echo '<div class="col-sm-6 khungsp" style="height: 300px">
+                  <a href="chitietsanpham.php?id='.$row['masp'].'">';
+                    echo '<img src="'.$row["hinhanh"].'" width="180px">
+                          <p style="text-align: center;"> ';
+                    echo $row["tensp"].'</br>
+                  </a>';
+                    echo '<b>'.$row["giatien"].' ₫</b>
+                    </p>';
+                  echo '<button class="nutgiohang">
+                    <i class="glyphicon glyphicon-shopping-cart"></i> Thêm vào giỏ hàng
+                </button>
+                </div>';
+            }
+        }
+
+     ?> 
+     <div id="df"></div> 
+  </div> 
+</div>
+ <div style="text-align: center;">  
+        <?php 
+          // phan trang
+            $x = "SELECT masp from sanphamdb where tensp like '%$search%'";
+            $r = mysqli_query($con,$x);
+            $tongsotin = mysqli_num_rows($r);
+            $sotrang = ceil($tongsotin/$sotin1trang);
+            echo '<ul class="pagination">';
+            for($t=1;$t<=$sotrang;$t++)
+              {  
+                if ($t == $trang)
+                {
+                  echo '<li><span style="background-color: #58FA82">'.$t.'</span</li>';
+                } 
+                else      
+                  echo '<li><a href="index.php?search='.$search.'&submit=&trang='.$t.'">'.$t.'</a></li>';         
+              }
+            echo '</ul>';
+            // sản phẩm rỗng
+            if ($tongsotin==0)
+            {
+              require("sanphamrong.php");
+            }
+
+        ?>  
+        </div>   
+<?php 
+      mysqli_close($con);
+?> 
+<?php require("footer.php"); ?>
 
 </body>
 </html>
