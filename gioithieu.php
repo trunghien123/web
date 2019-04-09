@@ -13,8 +13,7 @@
 </head>
 <body>
   <!-- header-->
-    <?php require("header.php"); ?>
-
+    <?php require("php/templates/header.php"); ?>
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>

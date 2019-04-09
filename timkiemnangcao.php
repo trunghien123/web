@@ -12,7 +12,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="js/ajax.js"></script>
-   <script src="js/xulitimkiem.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/containerr.css">
 
@@ -31,9 +30,9 @@
     <br/>
   </div>
   <div class="col-md-8 " id="dulieu">   
-    <?php  
-      //TÌM KIẾM
-      require("timkiem.php"); 
+    <!-- TIM KIEM NANG CAO -->
+    <?php
+          require("timkiemnc.php"); 
     ?>
   </div> 
 </div>

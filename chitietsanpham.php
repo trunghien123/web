@@ -11,7 +11,7 @@
 </head>
 <body>
 	<?php require("connection.php"); ?>
-	<?php require("header.php"); ?>
+	<?php require("php/templates/header.php"); ?>
 	<div class="row">
 		<?php 
 			$ids = $_GET['id'];
@@ -48,7 +48,7 @@
 	</div>
 <?php
 	mysqli_close($con); 
-	require("footer.php"); 
+	require("php/templates/footer.php"); 
 ?>
 </body>
 </html>
