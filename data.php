@@ -3,7 +3,7 @@
       $key=$_POST['id'];
       if($key=="")
       {
-        require("phantrang.php");
+        require("timkiem.php");
       }
       $sotin1trang = 8;
 

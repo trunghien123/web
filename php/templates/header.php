@@ -13,16 +13,23 @@
               <li><a href="index.php" class="active">Trang chủ</a></li>
               <li><a href="gioithieu.php">Giới thiệu</a></li>
               <li><a href="#">Projects</a></li>
-              <li><a href="require('header.php');">Liên hệ</a></li>
+              <li><a href="#">Liên hệ</a></li>
             </ul>  
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><spqn class=" glyphicon glyphicon-user"></spqn> Đăng kí</a></li>
+              <li>
+                <a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
+                </a>
+              </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a></li>
+              <?php
+              if(isset($_SESSION["success"])){
+                include "accout/login_success.php";
+              }
+              else
+                include "accout/login.php";
+              ?>
             </ul>
           </div>
       </div>

@@ -1,5 +1,13 @@
 <?php
+ ini_set('display_errors', 0);
+if(!isset($_SESSION))
+  session_start();
+  $user=$_SESSION["user"];
+?> 
+<?php
       require("connection.php");
+      require("function.php");
+      session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,9 +20,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="js/ajax.js"></script>
-   <script src="js/xulitimkiem.js"></script>
+  <!-- <script src="js/addcart.js"></script> -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/containerr.css">
+  <link rel="stylesheet" href="css/container.css">
 
   
 </head>
@@ -30,10 +38,25 @@
     <?php require("php/templates/left.php"); ?>
     <br/>
   </div>
-  <div class="col-md-8 " id="dulieu">   
+  <div class="col-md-8 " id="dulieu"> 
+    <?php
+    $file="timkiem.php";
+    if(isset($_REQUEST["b"]))
+    {
+      $b=$_REQUEST["b"];
+      if($b=="cpw")
+        $file="accout/change-pw.php";
+      if($b=="dangki")
+        $file="accout/register.php";
+      if($b=="ttcn")
+        $file="accout/thongtincanhan.php";    
+    }
+    include "$file";
+    
+    ?>  
     <?php  
       //TÌM KIẾM
-      require("timkiem.php"); 
+      //require("timkiem.php");
     ?>
   </div> 
 </div>
