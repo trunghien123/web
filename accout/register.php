@@ -82,7 +82,7 @@ function handleServerResponse()
 }
 </script>
 <div align="center">
-<form method="post" onSubmit="return thanhvien_insert(user.value,pass.value,apass.value,hoten.value,email.value,diachi.value,dienthoai,anti.value);" id="formthanhvien" name="formthanhvien">
+<form method="post" onSubmit="return thanhvien_insert(user.value,pass.value,apass.value,hoten.value,email.value,diachi.value,dienthoai.value,anti.value);" id="formthanhvien" name="formthanhvien">
         <table width="660px" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #222222;">
           <tr>
             <td height="35" colspan="2" align="center" style="background: #222222; color: #9d9d9d; font-size: 23px;"><div align="center">ĐĂNG KÝ THÀNH VIÊN</div></td>

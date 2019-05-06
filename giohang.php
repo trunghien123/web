@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/giohang.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/containerr.css">
   <link rel="stylesheet" href="css/giohangg.css">
@@ -21,14 +22,15 @@
   <!-- header-->
     <?php require("php/templates/header.php");?>
   </br>
-    <?php 
-       if(isset($_SESSION['user']) )
-      {
+  <div class="row" style="min-height: 500px">
+    <?php
+      if(isset($_SESSION['user']))
+      { 
         $stt=1;$tongtien=0;$temp=1;
         if(isset($_SESSION['cart']))
         {  
     ?>
-          <table border="1" class="order">            
+          <table border="1" class="order" id="dltable">            
             <tr>
               <th>STT</th>
               <th>Hình ảnh</th>
@@ -66,11 +68,17 @@
                     {
                       $temp=2;
                     }
+                
               }
+              $_SESSION['tongtien']=$tongtien;
             ?>
             <tr>
               <td colspan="3"></td>
-              <td colspan="2" style="padding: 15px 0px 15px 0px; background: #01DF3A;cursor: pointer;" ><a style="text-decoration: none;font-size: 18px;font-weight: bold;color: black">Thanh toán</a></td>
+              <td colspan="2" style="padding: 15px 0px 15px 0px; background: #01DF3A;cursor: pointer;" >
+                <a href="thanhtoan.php" style="text-decoration: none;font-size: 18px;font-weight: bold;color: black">
+                  Thanh toán
+                </a>
+              </td>
               <td>Tổng tiền: <?php echo number_format($tongtien,0,".",".").' ₫' ; ?></td>
               <td style="background: #FE030F"><a href="giohang/delete.php?key=0" style="text-decoration: none; color: white;">Xóa hết</a></td>
             </tr>
@@ -79,34 +87,24 @@
         }    
         if($temp!=2)
         {
-          echo "<b style='padding-left:460px;;font-size:25px;color:red'>BẠN KHÔNG CÓ SẢN PHẨM NÀO !!!</b>";
+          echo "<b style='padding-left:460px;font-size:25px;color:red'>BẠN KHÔNG CÓ SẢN PHẨM NÀO !!!</b>";
+          ?>
+            <script type="text/javascript">
+              document.getElementById('dltable').style.display='none';
+            </script>
+          <?php
         }
       }
-       else
-       {
-         echo "<b style='padding-left:460px;;font-size:25px;color:red'>BẠN CHƯA ĐĂNG NHẬP !!!</b>";
-       }
+      else
+      {     
+         echo "<b style='padding-left:460px;;font-size:25px;color:red'>BẠN CHƯA ĐĂNG NHẬP !!!</b>";     
+      }
     ?>
+  </div>
   </br>
 <?php 
       mysqli_close($con);
 ?> 
 <?php require("php/templates/footer.php"); ?>
-<!-- Cập nhật số lượng giỏ hàng -->
-<script type="text/javascript">
-  $(function(){
-    $updatecart = $(".updatecart");
-    $updatecart.click(function(e){
-      e.preventDefault();
-      $soluong = $(this).parents(".tr").find("#soluong").val();
-      $key = $(this).attr("data_key");
-      $.get("giohang/update.php",{key:$key,sl:$soluong},function(data){
-          alert("Cập nhật thành công");
-          window.location.reload();
-     })
-      
-    })
-  })
-</script>
 </body>
 </html>

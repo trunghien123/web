@@ -29,7 +29,8 @@
 				if($hieuluc==1){
 					if(!isset($_SESSION))
 					session_start();
-					$_SESSION["user"]=$user;
+					$_SESSION['id_user']=$thanhvien['id_user'];
+					$_SESSION['user']=$thanhvien['user'];
 					$_SESSION["success"]=true;
 					$_SESSION['hoten']=$thanhvien['hoten'];	
 					$_SESSION["hieuluc"]=$thanhvien["hieuluc"];

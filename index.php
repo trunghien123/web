@@ -64,6 +64,5 @@ if(!isset($_SESSION))
       mysqli_close($con);
 ?> 
 <?php require("php/templates/footer.php"); ?>
-
 </body>
 </html>

@@ -10,3 +10,27 @@
 	padding: 5px;
 	background: #01DF3A;
 }
+.tieudethanhtoan{
+	background: #F30827;
+	padding: 7px;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 20px 100px 20px 100px;
+}
+.thanhtoan{
+	height: 250px;	
+	width: 50%;
+	margin-left: 100px;
+}
+.thongtin{
+	padding: 5px;
+	border-radius: 5px;
+	background: #F4F9F3;
+	outline: none;
+	padding-left: 10px;
+}
+.xacnhan{
+	margin: 40px 0px 0px 230px;
+	padding: 10px 40px 10px 40px;
+	outline: none;
+}
