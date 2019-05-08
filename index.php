@@ -44,6 +44,8 @@ if(!isset($_SESSION))
     if(isset($_REQUEST["b"]))
     {
       $b=$_REQUEST["b"];
+      if($b=="change")
+        $file="accout/change.php";
       if($b=="cpw")
         $file="accout/change-pw.php";
       if($b=="dangki")

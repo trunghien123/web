@@ -10,25 +10,25 @@ $hoten=$r["hoten"];$email=$r["email"];$diachi=$r["diachi"];$dienthoai=$r["dienth
             <td height="35" colspan="2" align="center" class="tieude"><div align="center"><b>THÔNG TIN CÁ NHÂN CỦA KHÁCH HÀNG</b> <strong style="color: red"><?php echo $user ?></strong></div></td>
           </tr>
 		  <tr bgcolor="#f9f9f9" onmouseover="style.background='#d4340c'" onmouseout="style.background='#F9F9F9'">  
-            <td height="35" style="padding-left:70px"><div align="left" style="width:120px">Tên đăng nhập:</div></td>
+            <td height="35" style="padding-left:70px"><div align="left" style="width:120px;font-weight: bold;">Tên đăng nhập:</div></td>
  			<td width="405" style="padding-left:15px" align="left">
                 <?php echo "$user"?>                   				
               </td>            
           </tr>
           <tr onmouseover="style.background='#d4340c'" onmouseout="style.background='#FFFFFF'">            
-            <td height="35" style="padding-left:70px"><div align="left" style="width:120px">Họ tên:</div></td>
+            <td height="35" style="padding-left:70px"><div align="left" style="width:120px;font-weight: bold;">Họ tên:</div></td>
      		<td width="405" style="padding-left:15px">
        		  <?php echo "$hoten"; ?></td>            
           </tr>
           <tr bgcolor="#f9f9f9" onmouseover="style.background='#d4340c'" onmouseout="style.background='#F9F9F9'">            
-            <td height="35" style="padding-left:70px"><div align="left" style="width:120px">Email:</div></td>
+            <td height="35" style="padding-left:70px"><div align="left" style="width:120px;font-weight: bold;">Email:</div></td>
  			<td width="405" style="padding-left:15px">
               <div align="left">
                 <?php echo "$email"; ?>
               </div></td>            
           </tr>
           <tr onmouseover="style.background='#d4340c'" onmouseout="style.background='#FFFFFF'">   
-            <td height="35" style="padding-left:70px"><div align="left" style="width:120px">Địa chỉ:</div></td>
+            <td height="35" style="padding-left:70px"><div align="left" style="width:120px;font-weight: bold;">Địa chỉ:</div></td>
  			<td width="405" style="padding-left:15px">
              <div align="left">
 			<?php echo "$diachi"; ?>
@@ -36,7 +36,7 @@ $hoten=$r["hoten"];$email=$r["email"];$diachi=$r["diachi"];$dienthoai=$r["dienth
               </td>            
           </tr>       
           <tr bgcolor="#f9f9f9" onmouseover="style.background='#d4340c'" onmouseout="style.background='#F9F9F9'">            
-            <td height="35" style="padding-left:70px"><div align="left" style="width:120px">Điện thoại:</div></td>
+            <td height="35" style="padding-left:70px"><div align="left" style="width:120px;font-weight: bold;">Điện thoại:</div></td>
  			<td width="405" style="padding-left:15px">
               <div align="left">
                 <?php echo "$dienthoai"; ?>

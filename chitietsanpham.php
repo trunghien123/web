@@ -1,3 +1,6 @@
+<?php
+	require("connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +45,8 @@
 									data: {id:id},
 									cache:false,
 									success: function(results){
-										//if(isset($_SESSION["user"])){alert("helo");}
 										alert(results);
-										//window.location.reload();
+										
 									}
 								})
 							})
@@ -53,16 +55,25 @@
       		}
 		?>
 		<div class="col-md-4" >
-			<h3 align="center">THÔNG SỐ </h3>
-			Thương hiệu : Casio <hr/>
-			Loại mặt kính : Sapphire <hr/>
-			Chất liệu dây : Thép không gỉ 316L xi mạ theo công nghệ PVD<hr/>
-			Chất liệu vỏ : Thép không gỉ mạ vàng công nghệ PVD<hr/>
-			Đường kính mặt : 32.3mm <hr/>
-			Độ dày mặt đồng hồ : 8.3mm <hr/>
-			Thời hạn bảo hành: Bảo hành máy 1 năm, Pin 1 năm <hr/>
-			Chống nước : 5ATM <hr/>
-
+			<h3 align="center"><strong>THÔNG SỐ</strong> </h3>
+			<?php
+				$ids = $_GET['id'];
+				$sql= "SELECT * FROM chitietsanpham as c,sanphamdb as s where c.id_ctsp=s.id_ctsp and s.masp='$ids'";
+				$results = mysqli_query($con,$sql);
+				while ($row = mysqli_fetch_array($results)) 
+				{
+					?>
+					<strong>Thương hiệu :</strong> <?php echo $row['loaisp']?> <hr/>
+					<strong>Xuất xứ :</strong> <?php echo $row['xuatxu']?> <hr/>
+					<strong>Loại mặt kính :</strong> <?php echo $row['loaimatkinh']?> <hr/>
+					<strong>Chất liệu dây :</strong> <?php echo $row['chatlieuday'] ?><hr/>
+					<strong>Chất liệu vỏ :</strong> <?php echo $row['chatlieuvo']?><hr/>
+					<strong>Đường kính mặt :</strong> <?php echo $row['duongkinhmat']?> <hr/>
+					<strong>Thời hạn bảo hành :</strong> <?php echo $row['baohanh']?> <hr/>
+					<strong>Chống nước :</strong> <?php echo $row['chongnuoc']?> <hr/>
+			<?php
+				}
+			?>
 		</div>
 	</div>
 <?php

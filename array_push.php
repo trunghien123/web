@@ -23,8 +23,7 @@
                 data: {id:id},
                 cache:false,
                 success: function(results){
-                  //alert("Sản phẩm đã được thêm vào giỏ hàng");
-                  //window.location.reload();
+                  
                   alert(results);
                 }
                 })

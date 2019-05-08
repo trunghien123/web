@@ -28,7 +28,7 @@ if(isset($_POST["act"]))
 	}
 }
 ?>
-<script type="text/javascript" src="js/quanly.js"></script>
+<script type="text/javascript" src="js/quanli.js"></script>
 <script language="javascript">
 function createXMLHttp()
     {
@@ -83,70 +83,86 @@ function handleServerResponse()
 </script>
 <div align="center">
 <form method="post" onSubmit="return thanhvien_insert(user.value,pass.value,apass.value,hoten.value,email.value,diachi.value,dienthoai.value,anti.value);" id="formthanhvien" name="formthanhvien">
-        <table width="660px" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #222222;">
+      <table width="660px" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #222222;">
           <tr>
-            <td height="35" colspan="2" align="center" style="background: #222222; color: #9d9d9d; font-size: 23px;"><div align="center">ĐĂNG KÝ THÀNH VIÊN</div></td>
+            <td height="35" colspan="2" align="center" style="background: #222222; color: #9d9d9d; font-size: 23px;">
+              <div align="center">ĐĂNG KÝ THÀNH VIÊN</div>
+            </td>
           </tr>
-		  <tr bgcolor="#f9f9f9" onmouseover="style.background='#222222'" onmouseout="style.background='#F9F9F9'">  
-            <td height="50" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Tên đăng nhập:</div></td>
- 			<td width="405" style="padding-left:15px" align="left">
-                <input type="text" name="user" id="user" style="width:220px" value="<?php echo "$user"; ?>" onBlur="process()" />   
-                <font color="#FF0000">* </font>
-				<div id="kqkiemtra" style="color:#ff0000;"></div>
-              </td>            
+          <tr bgcolor="#f9f9f9" onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#F9F9F9'">  
+            <td height="50" style="padding-left:70px"><div align="left" style="width:120px;font-weight:bold">Tên đăng nhập:</div></td>
+            <td width="405" style="padding-left:8px" align="left">
+              <input type="text" name="user" id="user" style="width:220px" value="<?php echo "$user"; ?>" onBlur="process()" />   
+              <font color="#FF0000">* </font>
+              <div id="kqkiemtra" style="color:#ff0000;"></div>
+            </td>            
           </tr>
-		  <tr onmouseover="style.background='#222222'" onmouseout="style.background='#FFFFFF'">            
-            <td height="30" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Mật khẩu:</div></td>
- 			<td width="405" style="padding-left:15px">
+          <tr onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#FFFFFF'">            
+            <td height="30" style="padding-left:70px"><div align="left" style="width:120px;font-weight:bold">Mật khẩu:</div></td>
+            <td width="405" style="padding-left:8px">
               <div align="left">
                 <input type="password" name="pass" style="width:220px" />
-              <font color="#FF0000">*</font></div></td>            
+                <font color="#FF0000">*</font>
+              </div>
+            </td>            
           </tr>
-		  <tr bgcolor="#f9f9f9" onmouseover="style.background='#222222'" onmouseout="style.background='#F9F9F9'">  
-            <td height="30" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Nhập lại mật khẩu:</div></td>
- 			<td width="405" style="padding-left:15px">
+          <tr bgcolor="#f9f9f9" onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#F9F9F9'">  
+            <td height="30" style="padding-left:70px"><div align="left" style="width:130px;font-weight:bold">Nhập lại mật khẩu:</div></td>
+            <td width="405" style="padding-left:8px">
               <div align="left">
                 <input type="password" name="apass" style="width:220px"/>
-              <font color="#FF0000">*</font></div></td>            
+                <font color="#FF0000">*</font>
+              </div>
+            </td>            
           </tr>
-          <tr onmouseover="style.background='#222222'" onmouseout="style.background='#FFFFFF'">            
-            <td height="30" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Họ tên:</div></td>
-     		<td width="405" style="padding-left:15px">
-       		  <div align="left">
-       		    <input type="text" name="hoten" style="width:220px" value="<?php echo "$hoten"; ?>"/>
-   		      <font color="#FF0000">*</font></div></td>            
+          <tr onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#FFFFFF'">            
+            <td height="30" style="padding-left:70px"><div align="left" style="width:120px;font-weight:bold">Họ tên:</div></td>
+            <td width="405" style="padding-left:8px">
+             <div align="left">
+               <input type="text" name="hoten" style="width:220px" value="<?php echo "$hoten"; ?>"/>
+               <font color="#FF0000">*</font>
+             </div>
+           </td>            
           </tr>
-          <tr bgcolor="#f9f9f9" onmouseover="style.background='#222222'" onmouseout="style.background='#F9F9F9'">            
-            <td height="30" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Email:</div></td>
- 			<td width="405" style="padding-left:15px">
+          <tr bgcolor="#f9f9f9" onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#F9F9F9'">            
+            <td height="30" style="padding-left:70px"><div align="left" style="width:120px;font-weight:bold">Email:</div></td>
+            <td width="405" style="padding-left:8px">
               <div align="left">
                 <input type="text" name="email" style="width:220px" value="<?php echo "$email"; ?>"/>
-              <font color="#FF0000">*</font></div></td>            
+                <font color="#FF0000">*</font>
+              </div>
+            </td>            
           </tr>
-          <tr onmouseover="style.background='#222222'" onmouseout="style.background='#FFFFFF'">   
-            <td height="30" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Địa chỉ:</div></td>
- 			<td width="405" style="padding-left:15px" valign="top" align="left">              
-                <textarea name="diachi" rows="6" style="width:220px"><?php echo "$diachi"; ?></textarea>
-              <font color="#FF0000">*              <input type="hidden" name="anti" style="width:1px"></font></td>            
+          <tr onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#FFFFFF'">   
+            <td height="30" style="padding-left:70px"><div align="left" style="width:120px;font-weight:bold">Địa chỉ:</div></td>
+            <td width="405" style="padding-left:8px" valign="top" align="left">              
+              <textarea name="diachi" rows="6" style="width:220px;resize: none;"><?php echo "$diachi"; ?></textarea>
+              <font color="#FF0000">*
+                <input type="hidden" name="anti" style="width:1px">
+              </font>
+            </td>            
           </tr>       
-          <tr bgcolor="#f9f9f9" onmouseover="style.background='#222222'" onmouseout="style.background='#F9F9F9'">            
-            <td height="30" style="padding-left:70px"><div align="left" style="width:120px; color: #9d9d9d">Điện thoại:<span style="padding-left:15px">
-
-            </span></div></td>
- 			<td width="405" style="padding-left:15px">
+          <tr bgcolor="#f9f9f9" onmouseover="style.background='#9d9d9d'" onmouseout="style.background='#F9F9F9'">            
+            <td height="30" style="padding-left:70px">
+              <div align="left" style="width:120px; font-weight: bold;">Điện thoại:
+            </div>
+            </td>
+            <td width="405" style="padding-left:8px">
               <div align="left">
                 <input type="text" name="dienthoai" style="width:220px" value="<?php echo "$dienthoai"; ?>" onkeyup="valid(this,'numbers')" onblur="valid(this,'numbers')"/>
-              <font color="#FF0000">*</font></div></td>            
+                <font color="#FF0000">*</font>
+              </div>
+            </td>            
           </tr>
-
           <tr>
             <td height="35" colspan="2" align="center" >
               <div align="center">
                 <input type="submit" value="Đăng ký" class="button">
-				<input type="reset" value="Nhập lại" class="button">	
-    		<input type="hidden" name="act"/>
-            </div></td>
+                <input type="reset" value="Nhập lại" class="button">	
+                <input type="hidden" name="act"/>
+              </div>
+            </td>
           </tr>
-        </table></br>
+      </table></br>
 </form>
 </div>    
