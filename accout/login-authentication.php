@@ -18,6 +18,7 @@
 			$kq=mysqli_query($con,$sql);
 			$thanhvien=mysqli_fetch_array($kq);
 			$hieuluc=$thanhvien["hieuluc"];
+			$capquyen=$thanhvien["capquyen"];
 			$n=mysqli_num_rows($kq);
 			if($n==0)
 			{
@@ -26,7 +27,7 @@
 			}	
 			else 
 			{	
-				if($hieuluc==1){
+				if($hieuluc==1 && $capquyen==3){
 					if(!isset($_SESSION))
 					session_start();
 					$_SESSION['id_user']=$thanhvien['id_user'];
@@ -36,6 +37,17 @@
 					$_SESSION["hieuluc"]=$thanhvien["hieuluc"];
 					$_SESSION['capquyen']=$thanhvien["capquyen"];
 					header("location:../index.php");
+				}
+				elseif($hieuluc==1 && $capquyen==1){
+					if(!isset($_SESSION))
+					session_start();
+					$_SESSION['id_user']=$thanhvien['id_user'];
+					$_SESSION['user']=$thanhvien['user'];
+					$_SESSION["success"]=true;
+					$_SESSION['hoten']=$thanhvien['hoten'];	
+					$_SESSION["hieuluc"]=$thanhvien["hieuluc"];
+					$_SESSION['capquyen']=$thanhvien["capquyen"];
+					header("location:../admin/index.php");
 				}
 				else echo"<script>alert('Bạn không có quyền truy cập!');window.location='../index.php'</script>";
 			}

@@ -3,6 +3,10 @@
 if(!isset($_SESSION))
   session_start();
   $user=$_SESSION["user"];
+  if($user=="admin")
+  {
+    header("Location:admin/index.php");
+  }
 ?> 
 <?php
       require("connection.php");

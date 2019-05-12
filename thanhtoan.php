@@ -24,10 +24,10 @@
     {
       if($_SERVER["REQUEST_METHOD"] == "POST")
       {
-       
+        $diachi=$_POST['diachi'];
         $tongtien = $_SESSION['tongtien'];
         $id_user = $_SESSION['id_user'];
-        $sql="insert into donhang(tongtien,id_user) values('$tongtien','$id_user')"; 
+        $sql="insert into donhang(tongtien,id_user,diachigiaohang) values('$tongtien','$id_user','$diachi')"; 
         if (mysqli_query($con, $sql)) 
         {
           $last_id = mysqli_insert_id($con);
@@ -72,16 +72,16 @@
               <td><input type="text" name="email" readonly="" value="<?php echo $row['email']; ?>" size="50" class="thongtin" /></td>
             </tr>
             <tr>
-              <td><b>Số địa chỉ : </b></td>
-              <td><input type="text" name="diachi" readonly="" value="<?php echo $row['diachi']; ?>" size="50" class="thongtin" /></td>
-            </tr>
-            <tr>
               <td><b>Số điện thoại : </b></td>
               <td><input type="text" name="dienthoai" readonly="" value="<?php echo $row['dienthoai']; ?>" size="50" class="thongtin" /></td>
             </tr>
             <tr>
               <td><b>Tổng tiền : </b></td>
               <td><input type="text" name="tien" readonly="" value="<?php echo number_format($_SESSION['tongtien'],0,'.','.').' ₫'; ?>" size="50" class="thongtin" /></td>
+            </tr>
+            <tr>
+              <td><b>Địa chỉ giao hàng : </b></td>
+              <td><input type="text" name="diachi" value="<?php echo $row['diachi']; ?>" size="50" class="thongtin" /></td>
             </tr>
         </table>
         <button type="submit" class="btn btn-success xacnhan" >Xác nhận</button>  

@@ -16,9 +16,7 @@
 <body>
   <!-- header-->
     <?php require("php/templates/header.php"); ?>
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+
 
 </body>
 </html>
