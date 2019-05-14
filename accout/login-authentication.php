@@ -49,6 +49,10 @@
 					$_SESSION['capquyen']=$thanhvien["capquyen"];
 					header("location:../admin/index.php");
 				}
+				elseif($hieuluc==0 && $capquyen==3){
+					echo"<script>alert('Tài khoản của bạn đã bị khóa!');window.location='../index.php'</script>";
+					header("location:../admin/index.php");
+				}
 				else echo"<script>alert('Bạn không có quyền truy cập!');window.location='../index.php'</script>";
 			}
 		}

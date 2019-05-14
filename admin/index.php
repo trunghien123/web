@@ -15,60 +15,81 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="css/menu.css">
+  <!-- <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/giohangg.css">
+  <link rel="stylesheet" href="css/menu.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="font/css/all.css">
+  <link rel="stylesheet" href="css/qluser.css">
+  <link rel="stylesheet" href="css/qldm.css">
+  <link rel="stylesheet" href="css/qldh.css">
+  <link rel="stylesheet" href="css/qlsp.css">
 </head>
-<body style="background: #2E2E2E">
+<body >
   <?php
 	if(isset($_SESSION['user']))
      {
      ?>
-  <!-- header-->
-    <nav class="navbar navbar-inverse" style="position: sticky;position: -webkit-sticky;top: 0;z-index: 12;background: #2E2E2E">
-      <div class="container-fluid" >
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand">
-              <strong style="color: #6E6E6E;padding-left: 20px"> Xin chào <?php echo $_SESSION['user'] ?></strong>
-            </a>
-          </div>
-      </div>
-	</nav>
-  <!-- ============== -->
-  <?php
-  if(isset($_REQUEST["b"]))
-    {
-      $b=$_REQUEST["b"];
-      if($b=="change")
-        $file="accout/change.php";
-      if($b=="cpw")
-        $file="accout/change-pw.php";
-      if($b=="dangki")
-        $file="accout/register.php";
-      if($b=="ttcn")
-        $file="accout/thongtincanhan.php";    
-    }?>
-  <!-- ============== -->
-  <div class="row">
-    <div class="col-md-2">
-      <div class="vertical-menu">
-        <a href="#" class="active">Sản phẩm</a>
-        <a href="index.php?b=thanhvien">Thành viên</a>
-        <a href="index.php?b=donhang">Đơn hàng</a>
-        <a href="#">Thống kê</a>
-        <a href="../accout/logout.php">Đăng xuất</a>
-      
-      </div>
-    </div>
-    <div class="col-md-8" style="background: #FFF;min-height: 500px;">
-      <br/>
-      aaaaaaaaaaaa
-    </div>
   
+    <div class="wrapper">
+            <!-- header-->
+            <div class="header">
+                <a href="index.php"><span class="title-header">Xin chào <?php echo $_SESSION['user'];?></span></a>
+            </div>
+            <div class="left-menu">
+                <a class="left-menu__item active" style="text-decoration: none;" href="index.php?b=tk"><span id="speed-icon"></span>Thống kê</a>
+                <a class="left-menu__item" style="text-decoration: none;" href="index.php?b=qlsp"><span class="icon" id="product-icon"></span>Quản lý sản phẩm</a>
+                <a class="left-menu__item" style="text-decoration: none;" href="index.php?b=qluser"><span class="icon" id="user-icon"></span>Quản lý người dùng</a>
+                <a class="left-menu__item" style="text-decoration: none;" href="index.php?b=qldh"><span class="icon" id="don-hang-icon"></span>Quản lý đơn hàng</a>
+                <a class="left-menu__item" style="text-decoration: none;"  href="index.php?b=qldm"><span class="icon" id="danh-muc-icon"></span>Quản lý danh mục</a>
+                <hr/>
+                <a class="left-menu__item" style="text-decoration: none;" href="../accout/logout.php">&nbsp; <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;&nbsp;&nbsp;Đăng xuất</a>
+            </div>
+            <!-- container -->
+            <div class="main">
+            <?php 
+              $b=isset($_REQUEST["b"])?$_REQUEST["b"]:"";
+              if(!isset($_REQUEST['b']))
+              {
+                echo '<br/><div style="text-align:center;color: green;font-size:30px;font-weight:bold">Chào mừng bạn đến với trang Admin</div>';
+              }
+              switch($b){
+                case "tk":
+                  include('thongke.php');
+                  break;  
+                case "qlsp":
+                  include('qlsp.php');
+                  if(isset($_GET['c'])) 
+                  {
+                    if($_GET['c']=='sua')
+                    {
+                      require('formsuasp.php');
+                      require('suasp.php'); 
+                    } 
+                  }
+                  break;
+                case "qluser":
+                  include('qluser.php');
+                  if(isset($_GET['c'])?$_GET['c']:""=='sua')
+                    {
+                      require('formsuauser.php');
+                      require('suauser.php'); 
+                    }
+                  break;
+                case "qldh":
+                include('qldh.php');
+                break;
+                case "qldm":
+                  include('qldm.php');
+                  break;
+        }
+        
+      ?>
+            </div>
+            <div class="footer">
+                <div>Powered by <a href="index.php"> World Phone</a></div>
+            </div>
+        </div>
   <?php
 	}
 	else{
